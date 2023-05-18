@@ -1,0 +1,131 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv=Content-Type content='text/html; charset=UTF-8'><title>Basic Show/Hide Demo</title>
+	<meta name=author content='Mike Foster (Cross-Browser.com)'>
+	<meta name=description content='Cross-Browser Javascript Libraries and Applications'>
+	<meta name=keywords 
+		content='javascript,dhtml,crossbrowser,animation,tooltips,menu,collapsible,dhtml drag drop,downgradeable layout,dynamic select, image rollover,dhtml layout,css,dom,api,library,dhtml demos,lgpl code,
+          unobtrusive dhtml,dom2 events,dynamic forms,animation,ellipse,parametric equation, object-oriented javascript'>
+	<meta name='license' content='Distributed under the terms of the GNU LGPL (gnu.org)'>
+	<link rel='shortcut icon' href=http://cross-browser.com/favicon2.ico type='image/x-icon'>
+	<link rel='stylesheet' type='text/css' href='../../css/v3.css'>
+<!-- Everything above this line is for the site template, not for any demo on this page. -->
+
+<style type='text/css'>
+    .trigger {width:60px; height:30px; color:#000; background:#963; text-align:center; margin:8px 0; padding:2px;}
+    .panel {position:absolute; overflow:hidden; visibility:hidden; width:300px; height:200px; margin:0; padding:20px; color:#000; background:#963; border:1px solid #000;
+}
+</style>
+
+<script type='text/javascript' src='../x.js'></script>
+<script type='text/javascript'>
+window.onload = setup;
+
+function setup()
+{
+    var ele, i = 1;
+    do {
+    ele = xGetElementById('trigger' + i);
+    if (ele) {ele.panelId = 'panel' + i++; ele.onmouseover = tOnMouseover; ele.onmouseout = tOnMouseout;}
+  } while(ele);
+}
+function tOnMouseover()
+{
+  var panel = xGetElementById(this.panelId);
+  if (panel) {
+    var x = xScrollLeft() + (xClientWidth() - xWidth(panel)) / 2; var y = xScrollTop() + (xClientHeight() - xHeight(panel)) / 2;
+    xMoveTo(panel, x, y);
+    panel.style.visibility = 'visible';
+  }
+}
+function tOnMouseout()
+{
+  xGetElementById(this.panelId).style.visibility = 'hidden';
+}
+</script>
+
+</head>
+<body><div id='topLinkCon'><a name='topofpg'>&nbsp;</a></div>
+
+<div id='leftColumn' class='column'> <!-- Begin left column -->
+
+<div class='leftContent'> <!-- Begin left content -->
+
+<div id='header'>
+<div id='menubar1'>
+<a href='../../x/lib/' title='X Library Viewer'>X Library</a>&nbsp;|&nbsp;<a href='../../x/docs/x_tools.php' title='X Library Tools'>X Tools</a>&nbsp;|&nbsp;<a href='../../toys/' title='Demos and Applications'>Demos</a>&nbsp;|&nbsp;<a href='../../talk/' title='Articles and Documentation'>Docs</a>&nbsp;|&nbsp;<a href='../../forums/' title='X Library Community'>Forums</a>&nbsp;|&nbsp;<a href='../../' title='Cross-Browser.com'>Home</a>
+</div> <!-- end menubar1 -->
+<h1>Cross-Browser.com</h1>
+</div> <!-- end header -->
+
+<h2>Basic Show/Hide Demo</h2>
+
+<h3>Description</h3>
+<div class='collapsible'>
+<p>This quick little X demo illustrates hiding/showing "panels" when some trigger element is moused over. Any elements can be used as 'triggers'.</p>
+<p>The demo trigger elements are in the right column of this page. The panels are shown in the center of the page.</p>
+</div> <!-- end collapsible -->
+
+<h3>What's Next?</h3>
+<div class='collapsible'>
+<p>The next thing would be to make this page properly respond when Javascript is disabled.</p>
+<p>But I'm tired of messin with this puter for today.</p>
+<p>Next time,<br>Mike</p>
+</div> <!-- end collapsible -->
+
+<h3>But I must explain...</h3>
+<div class='collapsible'>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui do<a href="http://lipsum.com/" title="Read about Lorem Ipsum at lipsum.com">lorem ipsum</a> quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</div> <!-- end collapsible -->
+
+<h3>On the other hand...</h3>
+<div class='collapsible'>
+<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+</div> <!-- end collapsible -->
+
+</div> <!-- end leftContent -->
+
+
+<div id='footer' class='leftContent'>
+Copyright &copy; 2000-2010 Michael Foster<br>
+Javascript distributed under the terms of the <a href='../../license.html'>GNU LGPL</a>
+</div> <!-- end footer -->
+
+</div> <!-- end leftColumn -->
+
+<div id='rightColumn' class='column'>
+<div class='rightContent'>
+
+<h3>Demo</h3>
+<div class='collapsible'>
+<p>Mouse over the following elements:</p>
+<div id='trigger1' class='trigger'>Panel 1</div>
+<div id='trigger2' class='trigger'>Panel 2</div>
+<div id='trigger3' class='trigger'>Panel 3</div>
+</div> <!-- end collapsible -->
+
+
+</div> <!-- end rightContent -->
+</div> <!-- end rightColumn -->
+
+<div id='panel1' class='panel'>
+<p>panel1</p>
+<p>panel1</p>
+<p>panel1</p>
+</div>
+
+<div id='panel2' class='panel'>
+<p>panel2</p>
+<p>panel2</p>
+<p>panel2</p>
+</div>
+
+<div id='panel3' class='panel'>
+<p>panel3</p>
+<p>panel3</p>
+<p>panel3</p>
+</div>
+
+</body>
+</html>

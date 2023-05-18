@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv=Content-Type content='text/html; charset=iso-8859-1'><title>xMenu6</title>
+	<style type=text/css>
+		html, body {margin: 0; padding: 0; color: #000; background-color: #069; font-family: verdana,arial,helvetica,sans-serif; font-size:12pt;}
+		body {min-width:780px; text-align:center;
+}
+h1 {font-size: x-large; font-weight: bold; margin:0;}
+h2 {font-size: medium; font-weight: bold; margin:1em 0;}
+h3 {font-size: x-small; font-weight: bold; margin:2em 0 1em 0;}
+a {color: #000; background-color: transparent;}
+a:hover {color: #FFF; background-color: #069;}
+pre {font-family:'courier new',monospace; color:#069; background-color:transparent; border:1px dotted #069; margin:4px 2px 10px 2px; padding:10px; overflow:auto; font-size:smaller; max-height:32em;}
+
+/* Page-Structure rules */
+
+#idPage {
+    /* Layout */
+  position: relative; width: 780px; margin: 0 auto; padding: 0; text-align:left;  /* Style */ background-color: #69C; /* same bg as main col */
+}
+#idHeader {
+  /* Layout */
+  margin:0;
+  /* Style */
+  padding: 2em 1em;
+  background-color: #9CF;
+}
+#idColumns {
+  /* Layout */
+  position: relative;
+  width:780px;
+  overflow:hidden;
+  margin: 0 0;
+  padding: 0;
+  /* Style */
+  background-color: transparent;
+}
+#idMainColumn {
+  /* Layout */
+  margin: 0 0 0 180px;
+  /* Style */
+  padding: .5em 1.5em;
+  background-color: #FFF;
+}
+#idSideColumn {
+  /* Layout */
+  position:absolute;
+  overflow:hidden;
+  left:0;
+  top:0;
+  width: 160px;
+  margin: 0 0;
+  /* Style */
+  padding: 10px;
+  background-color: #69C;
+}
+#idFooter {
+  /* Layout */
+  margin: 0;
+  text-align:left;
+  /* Style */
+  padding: 10px;
+  background-color: #9CF;
+  font-size: smaller;
+}
+
+#idMainColumn li {
+  margin-bottom:.5em;
+  line-height:1.1em;
+}
+
+/* xMenu6 instance 1 */
+
+/*
+  Use the UL's ID to define rules that are generally not over-ridden.
+  These rules apply whether Javascript is enabled or disabled.
+*/
+
+#xMenu6_1 {
+  font-size:smaller;
+  font-weight:bold;
+  margin-top:3em;
+}
+
+#ActiveMenuItem {
+  color:#FFF;
+  background-color:#9CF;
+}
+
+/*
+  Use the UL's CLASS to define rules for when Javascript is disabled.
+  When Javascript is enabled the UL's className will be over-written
+  by a class defined in "xmenu6.css".
+*/
+
+.xMenu6 {
+}
+
+.xMenu6 ul {
+  margin:0;
+  padding:8px;
+  list-style:none;
+}
+.xMenu6 li {
+  margin:0;
+  padding:0;
+}
+</style>
+
+<script type='text/javascript' src='/x/xmenu6.js'></script>
+<script type='text/javascript' src='/x/xaddeventlistener.js'></script>
+<script type='text/javascript' src='/x/xgetelementbyid.js'></script>
+<script type='text/javascript' src='/x/xwalkul.js'></script>
+<script type='text/javascript' src='/x/xfirstchild.js'></script>
+<script type='text/javascript' src='/x/xnextsib.js'></script>
+<script type='text/javascript' src='/x/xgetcomputedstyle.js'></script>
+<script type='text/javascript'>
+
+// For HTML:
+document.write("<link rel='stylesheet' type='text/css' href='xmenu6.css'>");
+/* For XHTML:
+(function () {
+  var e, h = document.getElementsByTagName('head');
+  if (h && h.length) {
+    e = document.createElement('link');
+    e.rel = 'stylesheet';
+    e.type = 'text/css';
+    e.href = 'xmenu6.css';
+    h[0].appendChild(e);
+  }
+})();
+*/
+xAddEventListener(window, 'load',
+  function(){
+    new xMenu6('xMenu6_1', 'xmMainUL', 'xmSubUL', 'xmLblLI', 'xmItmLI', 'xmLblA', 'xmItmA',
+               '../../images/right_arrow_13x13.gif', '../../images/down_arrow_13x13.gif',
+               'xmImg', '2px', false, 'ActiveMenuItem');
+  }, false
+);
+</script>
+</head>
+<body>
+<div id="idPage">
+
+<div id="idHeader">
+<h1>xMenu6</h1>
+</div>
+
+<div id='idColumns'>
+<div id='idMainColumn'>
+
+<h2>Intro</h2>
+<p>This page demonstrates the UL-based xMenu6 in a two-column fixed width CSS layout. View 
+<a href='../lib/view.php?s=xMenu6'>xMenu6</a> documentation and source code.</p>
+
+<h2>Features</h2>
+
+<h3>Labels As Links</h3>
+<p>This demo has bLblIsItm==false so clicking a label does not cause the link to be followed. 
+Clicking either an icon or label causes the sub-menu to open/close. If bLblIsItm==true clicking a label causes the link to be followed. You must click an icon to open/close sub-menus without following the link.</p>
+<h3>Auto-open &amp; Highlight</h3>
+<p>If sActiveItmId is provided then the menu will be auto-opened to the item or label whose A element has sActiveItmId. In this demo the "xMenu6" item is auto-opened.</p>
+<h3>Dynamic Icons</h3>
+<p>An icon is dynamically inserted to the left of each label. You provide two CSS classes for this icon which are applied based on the opened/closed state of the label's sub-menu.</p>
+<h3>Progressive Enhancement</h3>
+<p>If Javascript is disabled the menu becomes a standard, nested list which can be styled separately from the dynamic menu.</p>
+<h3>Rollover Effects</h3>
+<p>It supports roll-over effects on items and labels. You specify different CSS classes for items and labels both in mouseover and mouseout states.</p>
+<h3>More Features</h3>
+<ul>
+  <li>Only one branch per level can be open at one time.</li>
+  <li>It is built on the xLibrary and so is extremely cross-browser.</li>
+  <li>It supports an unlimited number of levels and any number of menus per page.</li>
+</ul>
+
+<h2>Usage</h2>
+
+<h3>HTML Structure</h3>
+<p>xMenu6 works with standard, nested ULs where every LI element contains an A element. This defines an <i>item</i>. The following example has three items and no sub-menus.</p>
+<pre>
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<p>Each A element is optionally followed by a UL element. This defines a <i>label</i> and a sub-menu. The following example has one sub-menu.</p>
+<pre>
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;Level 1 Label&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sub-menu Item&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sub-menu Item&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<p>Sub-menus can be nested to any depth. View the source of this page for a more complex example.</p>
+
+<h3>UL ID and Class</h3>
+<p>The outermost UL must have an ID. You will pass this when you create the xMenu6 object. The outermost UL can also have a CLASS. This is used to apply styles when Javascript is disabled. View the source of this page for more details.</p>
+<pre>
+&lt;ul id='xMenu6_1' class='xMenu6'&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<h3>Auto-Open Active Item</h3>
+<p>The <i>active</i> item (the item which corresponds to the current page) can be auto-opened. The active item's A element should be given the ID "ActiveMenuItem".</p>
+<pre>
+&lt;ul id='xMenu6_1' class='xMenu6'&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a id='ActiveMenuItem' href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+</div> <!-- end idMainColumn -->
+
+<div id='idSideColumn'>
+
+  <ul id='xMenu6_1' class='xMenu6'>
+    <li>
+      <a href="http://cross-browser.com/toys/">X Demos</a>
+      <ul>
+        <li>
+          <a href="http://cross-browser.com/toys/index.php#object_demos">Objects</a>
+          <ul>
+            <li><a href="http://cross-browser.com/x/examples/drag2.php">xFenster</a></li>
+            <li><a id='ActiveMenuItem' href="http://cross-browser.com/x/menus/xmenu6.html">xMenu6</a></li>
+            <li><a href="http://cross-browser.com/x/examples/xhttprequest.html">xHttpRequest</a></li>
+            <li><a href="http://cross-browser.com/x/examples/xsplitter.html">xSplitter</a></li>
+            <li><a href="http://cross-browser.com/x/examples/tabpanelgroup.php">xTabPanelGroup</a></li>
+            <li><a href="http://cross-browser.com/x/examples/xselect.php">xSelect</a></li>
+            <li><a href="http://cross-browser.com/x/examples/tooltips3.html">xTooltipGroup</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="http://cross-browser.com/toys/index.php#animation_demos">Animations</a>
+          <ul>
+            <li><a href="http://cross-browser.com/x/examples/xanimation.php">xAnimation</a></li>
+            <li><a href="http://cross-browser.com/x/examples/floater_bar.php">xSlideTo</a></li>
+            <li><a href="http://cross-browser.com/x/examples/xellipse.php">xEllipse</a></li>
+            <li><a href="http://cross-browser.com/x/examples/xparaeq.php">xParaEq</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="http://cross-browser.com/toys/index.php#table_demos">Tables</a>
+          <ul>
+            <li><a href="http://cross-browser.com/x/examples/xtable.html">xTable</a></li>
+            <li><a href="http://cross-browser.com/x/examples/xthf.html">xTableHeaderFixed</a></li>
+            <li><a href="http://cross-browser.com/x/examples/table_sync.html">xTableSync</a></li>
+            <li><a href="http://cross-browser.com/x/examples/table_toys.php">Table Toys</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="http://cross-browser.com/talk/">X Docs</a>
+      <ul>
+        <li><a href="http://cross-browser.com/x/">X Viewer</a></li>
+        <li><a href="http://cross-browser.com/x/docs/x_quickstart.php">Quick Start</a></li>
+        <li><a href="http://cross-browser.com/x/docs/x_structure.php">Lib Structure</a></li>
+        <li><a href="http://cross-browser.com/x/docs/xc_reference.php">XC Reference</a></li>
+        <li><a href="http://cross-browser.com/talk/license_faq.php">License FAQ</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="http://www.sitepoint.com/forums/forumdisplay.php?f=15">Support</a>
+      <ul>
+        <li>
+          <a href="http://www.sitepoint.com/forums/forumdisplay.php?f=15">Free</a>
+          <ul>
+            <li><a href="http://cross-browser.com/forums/">X Forums</a></li>
+            <li><a href="http://www.sitepoint.com/forums/forumdisplay.php?f=15">SitePoint</a></li>
+            <li><a href="http://www.hftonline.com/forum/forumdisplay.php?f=16">HFTOnline</a></li>
+            <li><a href="http://www.codingforums.com/forumdisplay.php?f=2">CodingForums</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href='http://cross-browser.com/contact.php'>Paid</a>
+          <ul>
+            <li><a href="http://cross-browser.com/contact.php?s=RFQ">Request A Quote</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul> <!-- end xMenu6_1 -->
+
+</div> <!-- end idSideColumn -->
+
+</div> <!-- end idColumns -->
+
+<div id="idFooter">
+<p>For more Javascript toys visit <a href='http://cross-browser.com/'>Cross-Browser.com</a></p>
+</div>
+
+</div> <!-- end idPage -->
+
+</body>
+</html>

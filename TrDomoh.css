@@ -1,0 +1,177 @@
+﻿* {box-sizing: border-box; border:none; vertical-align: top;}
+body {margin: 0px; background-image: url('images/TrFondo.gif'); background-attachment: fixed;}
+body,td,th {font-family:Verdana,Arial,Helvetica,sans-serif;	font-size:11px;	color:#71001E;}
+table {line-height:30px;}
+td {padding-top:0px; padding-bottom:0px;}
+img {border-style:none; vertical-align: middle;}
+input,select {border:1px; border-style:inset;}
+ol {margin-top: 0cm;}
+a:link {text-decoration: none; color: #333333; font-weight: bold;}
+a:hover {color: #E13E83; font-weight: bold;}
+div,textarea {padding: 0px; border: 1px;}
+iframe {padding: 0; width: 100%; height: 100%; border: 0; background-image: url('images/TrFondo.gif'); background-attachment: fixed;}
+
+.container {  
+    display: grid; width: 100%; height: 100%;
+    grid-template-areas: "logo banner banner topmenu topmenu"
+                         "main main main main main"
+                         "foot foot foot foot foot";
+    grid-template-rows: auto 1fr 30px; grid-template-columns: 20% 1fr 1fr 150px 150px;}
+.logo {grid-area: logo; padding: 10px;}
+.banner {grid-area: banner; padding: 10px;}
+.topmenu {grid-area: topmenu; padding: 10px;
+          grid-template-rows: 50px 50px 50px 50px;}
+.main {grid-area: main; padding: 10px; grid-template-rows: 1fr 1fr; grid-template-columns: 1fr 1fr;}
+.foot {grid-area: foot; padding: 10px; white-space:normal}
+.oculto {display: none}
+
+.contanuncio {  
+    display: grid; width: 100%; 
+    grid-template-areas: "anposted anciudad anzona antipo anprecio anfuma anmascota"
+                        "andesc andesc andesc andesc andesc andesc andesc"
+                        "angente angente angente ancontacto ancontacto ancontacto ancontacto"
+                        "anvoto anvoto anvoto anvoto anfotoxtra anfotoxtra anfotoxtra"
+                        "anvoto anvoto anvoto anvoto anfotoxtra anfotoxtra anfotoxtra";
+    grid-template-rows: auto auto auto 1fr auto; grid-template-columns: 150px 150px 150px 150px 150px 150px 1fr;}
+.anposted {grid-area: anposted; padding: 10px; background-color: lightcyan}
+.anciudad {grid-area: anciudad; padding: 10px; background-color: lightcyan}
+.anzona {grid-area: anzona; padding: 10px; background-color: lightcyan}
+.antipo {grid-area: antipo; padding: 10px; background-color: lightcyan}
+.anprecio {grid-area: anprecio; padding: 10px; background-color: lightcyan}
+.anfuma {grid-area: anfuma; padding: 10px; background-color: lightcyan}
+.anmascota {grid-area: anmascota; padding: 10px; background-color: lightcyan}
+.andesc {grid-area: andesc; padding: 10px; background-color: lightgreen}
+.angente {grid-area: angente; padding: 10px; background-color: lightpink}
+.ancontacto {grid-area: ancontacto; padding: 10px; background-color: lightpink}
+.anvoto {grid-area: anvoto; padding: 10px; background-color: lightgoldenrodyellow}
+.anentradas {grid-area: anentradas; padding: 10px;}
+.anfotoxtra {grid-area: anfotoxtra; padding: 10px;}
+
+.contmanuncio {  
+    display: grid; width: 100%; 
+    grid-template-areas: "manfoto mantitulo mantipo manprecio manicon"
+                         "manfoto mancontacto mancontacto manperro mancigarro"
+                         "mandetalle mandetalle mandetalle manadicional manadicional "
+                         "mandetalle mandetalle mandetalle mancomment mancomment";
+    grid-template-rows: auto auto auto auto; grid-template-columns: auto 1fr 1fr 1fr 1fr;}
+.manfoto {grid-area: manfoto; padding: 10px; background-color: lightcyan}
+.mantitulo {grid-area: mantitulo; padding: 10px; background-color: lightcyan}
+.mantipo {grid-area: mantipo; padding: 10px; background-color: lightcyan}
+.manprecio {grid-area: manprecio; padding: 10px; background-color: lightcyan}
+.manidioma {grid-area: manidioma; padding: 10px; background-color: lightcyan}
+.manicon {grid-area: manicon; padding: 10px; background-color: lightcyan}
+.manperro {grid-area: manperro; padding: 10px; background-color: lightcyan}
+.mancontacto {grid-area: mancontacto; padding: 10px; background-color: lightcyan}
+.manmapa {grid-area: manmapa; padding: 10px; background-color: lightcyan}
+.mancigarro {grid-area: mancigarro; padding: 10px; background-color: lightcyan}
+.mandetalle {grid-area: mandetalle; padding: 10px;}
+.manadicional {grid-area: manadicional; padding: 10px;}
+.mancomment {grid-area: manadicional; padding: 10px;}
+
+.contmanuncioflex {display: flex; flex-flow: row wrap; vertical-align: top;}
+.contmanuncioflexkid {padding: 10px;}
+.manfotoflex {flex: 3 1 100px;}
+
+header {grid-column: span 12;}
+aside {grid-column: span 2;}
+main {grid-column: span 10;}
+footer {grid-column: span 12;}
+header {display: flex;}
+header > div:nth-child(3) {margin-left: auto;}
+
+.aviso {line-height: 25px; text-align:center; font-size:14px; color:#363636; text-decoration:none; width:100%;}
+.icono {width: 20px;}
+.pestana {width: 20%;}
+.ban_portada {width: 45%;}
+.imagen {width: 100%;}
+.menu {text-align: center; padding:0; border:0}
+.ProdDatos {text-align:justify; text-indent:35.4pt;}
+.submenu {font-size:x-small; color:#FF0000; text-align: right;} 
+.pie {font-size:xx-small;color:#808080; text-align: center; margin: auto;}
+.fondo {background-image: url('images/TrFondo.gif'); background-attachment: fixed;}
+.bubbles {background-image: url('images/NuDomohBurbujas.gif'); background-attachment: fixed; background-position: 0 -185px; text-indent: 5px; margin-left: 5px; margin-right: 5px;}
+.frame {width:100%; height:1000px; padding:0px; border:0px;}
+.detalles {text-align: justify; color: #3333CC;}
+.linkutils {font-size:11px; font-weight:bold; color:#71001E; text-decoration:none; height: 100%}
+.anuncios2_cab {display: table-row; font-size:10px;	font-weight:bold; color:#FFFFFF; text-decoration:none; background-color:#d1577d;text-transform:uppercase; text-align:center;}
+.anuncios2 {font-size:11px; text-decoration:none; text-align:left; vertical-align:top; padding-top:6px;	padding-left:4px; padding-right:2px; padding-bottom:2px;}
+.anunciosDest {
+	font-size:11px; text-decoration:none; text-align:left; vertical-align:top; padding-top:6px;	padding-left:4px; padding-right:2px; padding-bottom:2px;
+	border-top: 2px outset #D1577D; border-bottom: 2px outset #D1577D; background-color:#FFCCFF;
+}
+.titSecDestacHome {font-size:14px; font-weight:bold; color:#FFFFFF; text-decoration:none; background-color:#C54DE3; padding:3px;}
+.filaestrecha {font-size:5px; height:5px; padding-top:10px;}
+.txtBlockSEC {font-size:12px; line-height:16px; color:#363636; text-decoration:none; text-align:left;}
+.tituSec {font-family:Georgia,"Times New Roman",Times,serif; font-size:16px; font-weight:bold; color:#982FB3; text-decoration:none; text-align:left;}
+.pastillaDestac {font-size:12px; font-weight:bold; color:#FFFFFF; text-decoration:none; background-color:#A94B6A;}
+.tituVerAnuncios {font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; color:#7A7A7A; text-decoration:none; text-align:left;}
+.tituVerAnunciosBold {font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; color:#555555; text-decoration:none; text-align:left;}
+.verAnuncios {font-size:13px; font-weight:bold; color:#363636; text-decoration:none; background-color: #FFDAB8; text-align: left; padding-left: 10px;}
+.publiAnuncios {font-size: 13px; font-weight: normal; color: #363636; text-decoration: none; background-color: #EBEBEB; text-align: left; padding-left: 10px;}
+.btnForm {
+	font-size: 12px; font-weight: bold; color: #FFFFFF; text-decoration: none; background-color: #C74271; text-align: center; padding-top: 2px; padding-right: 3px; padding-bottom: 2px; padding-left: 3px; 
+    border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;}
+.bordeBurdeos {border: 1px solid #D1577D;}
+.anuncios3_cab {font-size: 12px; font-weight: bold; color: #FFFFFF; text-decoration: none; background-color: #D1577D; text-align: center; display:table-cell;}
+.btnLogin {
+	font-size: 11px; font-weight: bold;	color: #FFFFFF;	text-decoration: none; background-color: #FC722F; text-align: center; padding-top: 2px;	padding-right: 3px;	padding-bottom: 2px; padding-left: 3px;
+	border-top-width: 0px; border-right-width: 0px;	border-bottom-width: 0px; border-left-width: 0px;}
+.linkTxtSub {color: #333399; text-decoration: underline;}
+.formentrada {line-height: 25px; text-align:left;}
+.row {grid-row: auto; grid-column: auto;}
+
+.gridrow {display: table-row; border-bottom: 1px solid;}
+.gridtable {display: table}
+.left, .right, .middle {display:table-cell; padding-right: 25px;}
+
+.left p, .right p, .middle p, .row p {margin: 1px 1px;}
+.seccion {border-bottom-style:solid;}
+.destacado {border-bottom-style: solid; border-top-style: solid; text-align: center;}
+.absoluta {position:absolute;}
+.euro {position: relative; left: 20px;}
+.fotogran {width:30%;}
+.galeria {overflow:auto; height:250;}
+.bordeazul {border: 1px solid cyan;}
+.telefono {position: relative; top: 4px}
+.noborde {border:none}
+.bolatexto {font:bold;position:absolute;left:240px;top:150px}
+.fotogrande {width: 300px}
+.fotopeque {width: 100px}
+
+table.verAnuncios1 a {background: #FFFFFF; display: block;}
+div.verAnuncios1 a {color: #454545; background: #FFDAB8; text-decoration:none; font-size:12px; padding: 5px 0px 5px 8px; font-family: Arial, Helvetica, sans-serif; text-align: left;}
+div.verAnuncios1 {position: absolute; top: 0; left: 0;}
+div.verAnuncios1 a:link {color: #333333; text-decoration: none; background: #FFDAB8;}
+div.verAnuncios1 a:active {color: #000000; text-decoration: none; background: #C74271;}
+div.verAnuncios1 a:visited {color: #333333; text-decoration: none; background: #FFDAB8;}
+div.verAnuncios1 a:hover {color: #EEEEEE; text-decoration: none; background: #C74271;}
+
+table.publiAnuncios1 a {background: #FFFFFF; display: block;}
+div.publiAnuncios1 a {color: #454545; background: #EBEBEB; text-decoration:none; font-size:12px; padding: 5px 0px 5px 8px; font-family: Arial, Helvetica, sans-serif; text-align: left;}
+div.publiAnuncios1 div {position: absolute; top: 0; left: 0;} /*fixes IE slowness?? */
+div.publiAnuncios1 a:link {color: #333333; text-decoration: none; background: #EBEBEB;}
+div.publiAnuncios1 a:active {color: #000000; text-decoration: none; background: #C74271;}
+div.publiAnuncios1 a:visited {color: #333333; text-decoration: none; background: #EBEBEB;}
+div.publiAnuncios1 a:hover {color: #EEEEEE; text-decoration: none; background: #C74271;}
+
+.anunciodetstyle {background-color:#3333CC;color:#FFFFFF}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+div.nomovil {display: block;}
+@media only screen and (min-width: 501px) and (max-width: 1024px) {div.nomovil {width: 58.33%;} .formentrada {font-size:14px; padding:5px;}}
+@media only screen and (max-width: 500px) {div.nomovil {display:none;} .formentrada {font-size:14px;} [class*="col-"] {width: 100%;}}
+
+[class*="col-"] {float: left; padding: 15px;}
+.row::after {content: ""; clear: both; display: table;}

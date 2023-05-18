@@ -1,0 +1,70 @@
+﻿body
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    TEXT-DECORATION: none
+}
+TABLE
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: black;
+    FONT-FAMILY: Verdana
+}
+INPUT
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    BACKGROUND-COLOR: whitesmoke
+}
+SELECT
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    BACKGROUND-COLOR: whitesmoke
+}
+TEXTAREA
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    BACKGROUND-COLOR: whitesmoke
+}
+.gridtbl
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none;
+    BACKGROUND-COLOR: white
+}
+.gridtbl .tdOutset
+{
+    BORDER-RIGHT: #deeef7 thin outset;
+    BORDER-TOP: #deeef7 thin outset;
+    FONT-WEIGHT: bolder;
+    TEXT-TRANSFORM: uppercase;
+    BORDER-LEFT: #deeef7 thin outset;
+    BORDER-BOTTOM: #deeef7 thin outset;
+    BACKGROUND-COLOR: #d6d3ce;
+    TEXT-DECORATION: none
+}
+.gridtbl .tdPlain
+{
+    BORDER-RIGHT: #a9a9a9 1pt solid;
+    BORDER-TOP: #a9a9a9 1pt solid;
+    BORDER-LEFT: #a9a9a9 1pt solid;
+    BORDER-BOTTOM: #a9a9a9 1pt solid;
+    BACKGROUND-COLOR: #f5f5f5
+}
+IMG
+{
+    CURSOR: hand
+}

@@ -1,0 +1,46 @@
+﻿<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started with ml5.js and p5.js</title>
+    <script src="https://unpkg.com/ml5@0.3.1/dist/ml5.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      // Your code will go here
+      // open up your console - if everything loaded properly you should see 0.3.1
+      console.log('ml5 version:', ml5.version);
+
+    </script>
+  </body>
+</html><!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>React Tutorial</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js'></script>
+    <script>
+    // Create a new word2vec method
+const wordVectors = ml5.word2vec("wordvecs.json", modelLoaded);
+
+// When the model is loaded
+function modelLoaded() {
+  console.log("Model Loaded!");
+}
+
+// Find the closest word to 'rainbow'
+wordVectors.nearest("rainbow", function(err, results) {
+  console.log(results);
+});
+</script>
+</head>
+<body>
+    <div id=content></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+</body>
+</html>

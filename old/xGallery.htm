@@ -1,0 +1,429 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv=Content-Type content='text/html; charset=UTF-8'>
+	<title>Javascript Image Gallery &amp; Slideshow</title>
+	<link rel='shortcut icon' href=http://cross-browser.com/favicon2.ico type=image/x-icon><link rel=stylesheet type=text/css href=/x/v3.css>
+<!-- Everything above this line is for the site template, not for any demo on this page. -->
+
+<style type=text/css>
+	#gallery {height:320px; display:none;}
+	#slideshow {display:none;}
+	.gcap {font-size:xx-small; margin:3px; padding:0;}
+	.scap {font-size:xx-small; margin:3px; padding:0;}
+.gcon { /* gallery image/caption container */
+	width:114px; height:120px; margin:10px; background:#CFD4E6; border:1px solid #BF8660; float:left;}
+.scon { /* slideshow image/caption container */
+	width:480px; margin:10px; background:#CFD4E6; border:1px solid #BF8660;}
+#gallery img {margin:6px 6px 3px 6px; background:#CFD4E6;}
+#slideshow img {margin:6px 6px 3px 6px; background:#CFD4E6;}
+#navigation {/*  text-align:center; */}
+#prev, #next, #back, #auto, #time {
+  color:#BF8660; cursor:pointer;
+  font-weight:bold;
+  margin-right:20px;
+}
+.clearAll {
+  clear:both;
+  margin:0; padding:0;
+}
+</style>
+
+<script type='text/javascript'>
+
+// Begin User Configurable Variables:
+
+var imgsPerPg = 6; // number of img elements in the html
+var slideTimeout = 7; // seconds before loading the next slide
+
+var gPath = '/minifotos/';  // gallery files (thumbnails) path, include trailing slash
+var sPath = '/fotos/'; // slideshow files (big imgs) path, include trailing slash
+
+var fotos = new Array();
+// There must be (imgsMax + 1) captions.
+fotos[0] = "10.jpg";
+fotos[1] = "10049.jpg";
+fotos[2] = "10050.jpg";
+fotos[3] = "10051.jpg";
+fotos[4] = "10052.jpg";
+fotos[5] = "10053.jpg";
+fotos[6] = "10054.jpg";
+fotos[7] = "10067.jpg";
+fotos[8] = "10068.jpg";
+var imgsMax = 8;  // total number of images
+
+// End User Configurable Variables
+
+window.onload = function()
+{
+  xImgGallery();
+};
+
+/* Development Notes and Script Assumptions:
+
+2) IMG IDs begin with 'g' (for gallery) or 's' (for slideshow)
+   then are numbered sequentially beginning with 1. No leading zeros.
+
+3) Gallery (thumbnail) image pathnames: gPath + gPrefix + seq_num + gSuffix + gExt
+   SlideShow (large image) pathnames:   sPath + sPrefix + seq_num + sSuffix + sExt
+   Leading zeros (as part of seq_num) are optional.
+
+4) The captions array initializations could be generated server-side.
+
+5) This file does not have to be a PHP file - I use it here for my page-template, not for this demo.
+*/
+
+/* xImgGallery, Copyright (C) 2004,2005 Michael Foster (Cross-Browser.com)
+   Distributed under the terms of the GNU LGPL.
+*/
+
+// don't change these:
+var galMode = true;
+var autoSlide = false;
+var slideTimer = null;
+var slideCounter = 0;
+var currentSlide = 1;
+
+function xImgGallery()
+{
+  if (document.getElementById && document.getElementById('navigation').style) {
+    var n = 1, a = xGetURLArguments();
+    if (a.length) {
+      var arg = a['g'] || a['s'];
+      if (arg) {
+        n = parseInt(arg, 10);
+        if (n <= 0 || n > imgsMax) { n = 1; } 
+        if (a['s']) { galMode = false; }
+      }
+    }
+    gal_paint(n);
+    document.getElementById('time').style.display = 'none';
+  }
+}
+function gal_paint(n)
+{
+  gal_setImgs(n);
+  gal_setNav(n);
+}
+function gal_setImgs(n)
+{
+  var ssEle = document.getElementById('slideshow');
+  var galEle = document.getElementById('gallery');
+  var i, imgTitle, pth, img, id, src, ipp, idPrefix, imgSuffix, imgPrefix;
+  var zeros, digits, capEle, capPar;
+  if (galMode) {
+    ipp = imgsPerPg;
+    idPrefix = 'g';
+    imgTitle = 'Click to view large image';
+    ssEle.style.display = 'none';
+    galEle.style.display = 'block';
+    pth = gPath;
+  }
+  else {
+    currentSlide = n;
+    ipp = 1;
+    idPrefix = 's';
+    imgTitle = '';
+    ssEle.style.display = 'block';
+    galEle.style.display = 'none';
+    pth = sPath;
+  }
+  for (i = 0; i < ipp; ++i) {
+    id = idPrefix + (i + 1);
+    img = document.getElementById(id);
+    if ((n + i) <= imgsMax) {
+      img.title = imgTitle;
+      img.src = pth + fotos[n+i]; // img to load now
+      img.onerror = imgOnError;
+      img.style.width=img.parentNode.clientWidth - 10;
+      img.parentNode.style.height=img.height + 10;
+      if (galMode) {
+        img.style.cursor = 'pointer';
+        img.slideNum = n + i; // slide img to load onclick
+        img.onclick = imgOnClick;
+      }
+      img.style.display = 'inline';
+    }
+    else {
+      img.style.display = 'none';
+    }
+  }  
+}
+function imgOnClick()
+{
+  galMode = false;
+  gal_paint(this.slideNum);
+}
+function imgOnError()
+{
+  var p = this.parentNode;
+  if (p) p.style.display = 'none';
+}
+function gal_setNav(n)
+{
+  var ipp = galMode ? imgsPerPg : 1;
+  // Next
+  var e = document.getElementById('next');
+  if (n + ipp <= imgsMax) {
+    e.nextNum = n + ipp;
+    e.onclick = next_onClick;
+    e.style.display = 'inline';
+  }
+  else {
+    e.nextNum = 1;
+  }
+  // Previous
+  e = document.getElementById('prev');
+  e.style.display = 'inline';
+  e.onclick = prev_onClick;
+  if (n > ipp) {
+    e.prevNum = n - ipp;
+  }
+  else {
+    e.prevNum = galMode ? normalize(imgsMax) : imgsMax;
+  }
+  // Back
+  e = document.getElementById('back');
+  if (!galMode) {
+    e.onclick = back_onClick;
+    e.style.display = 'inline';
+    e.backNum = normalize(n);
+  }
+  else {
+    e.style.display = 'none';
+  }
+  // Auto Slide
+  e = document.getElementById('auto');
+  if (!galMode) {
+    e.onclick = auto_onClick;
+    e.style.display = 'inline';
+  }
+  else {
+    e.style.display = 'none';
+  }
+}
+function normalize(n)
+{
+  return 1 + imgsPerPg * (Math.ceil(n / imgsPerPg) - 1);
+}
+function next_onClick(e)
+{
+  gal_paint(this.nextNum);
+}
+function prev_onClick(e)
+{
+  gal_paint(this.prevNum);
+}
+function back_onClick(e)
+{
+  galMode = true;
+  if (slideTimer) {
+    clearTimeout(slideTimer);
+  }
+  autoSlide = false;
+  gal_paint(this.backNum);
+  document.getElementById('time').style.display = 'none';
+}
+function auto_onClick(e)
+{
+  var ele = document.getElementById('time');
+  autoSlide = !autoSlide;
+  if (autoSlide) {
+    slideCounter = 0;
+    slideTimer = setTimeout("slide_OnTimeout()", slideTimeout);
+    ele.style.display = 'inline';
+  }
+  else if (slideTimer) {
+    clearTimeout(slideTimer);
+    ele.style.display = 'none';
+  }
+}
+function slide_OnTimeout()
+{
+  slideTimer = setTimeout("slide_OnTimeout()", 1000);
+  ++slideCounter;
+  document.getElementById('time').innerHTML = slideCounter + '/' + slideTimeout;
+  if (slideCounter == slideTimeout) {
+    if (++currentSlide > imgsMax) currentSlide = 1; 
+    gal_paint(currentSlide);
+    slideCounter = 0;
+  }
+}
+
+/* xGetURLArguments and xPad are part of the X library,
+   distributed under the terms of the GNU LGPL,
+   and maintained at Cross-Browser.com.
+*/
+function xGetURLArguments()
+{
+  var idx = location.href.indexOf('?'); var params = new Array();
+  if (idx != -1) {
+    var pairs = location.href.substring(idx+1, location.href.length).split('&');
+    for (var i=0; i<pairs.length; i++) {
+      nameVal = pairs[i].split('=');
+      params[i] = nameVal[1];
+      params[nameVal[0]] = nameVal[1];
+    }
+  }
+  return params;
+}
+function xPad(str, finalLen, padChar, left)
+{
+  if (typeof str != 'string') str = str + '';
+  if (left) { for (var i=str.length; i<finalLen; ++i) str = padChar + str; }
+  else { for (var i=str.length; i<finalLen; ++i) str += padChar; }
+  return str;
+}
+</script>
+
+</head>
+<body><div id='topLinkCon'><a name='topofpg'>&nbsp;</a></div>
+
+<div id='leftColumn' class='column'> <!-- Begin left column -->
+
+<div class='leftContent'> <!-- Begin left content -->
+
+<div id='header'>
+<div id='menubar1'>
+<a href='../x/lib/' title='X Library Viewer'>X Library</a>
+&nbsp;|&nbsp;<a href='../x/docs/x_tools.php' title='X Library Tools'>X Tools</a>&nbsp;|&nbsp;<a href='../toys/' title='Demos and Applications'>Demos</a>&nbsp;|&nbsp;<a href='../talk/' title='Articles and Documentation'>Docs</a>&nbsp;|&nbsp;<a href='../forums/' title='X Library Community'>Forums</a>&nbsp;|&nbsp;<a href='../' title='Cross-Browser.com'>Home</a>
+</div> <!-- end menubar1 -->
+<h1>Cross-Browser.com</h1>
+</div> <!-- end header -->
+
+<h2>Javascript Image Gallery &amp; Slideshow</h2>
+
+<h3>Demo</h3>
+<div id='demo1'>
+    <div id='gallery'>
+  <div>
+    <div class='gcon'><img id='g1'><div class='gcap' id='gc1'>&nbsp;</div></div>
+    <div class='gcon'><img id='g2'><div class='gcap' id='gc2'>&nbsp;</div></div>
+    <div class='gcon'><img id='g3'><div class='gcap' id='gc3'>&nbsp;</div></div>
+    <div class='clearAll'>&nbsp;</div>
+  </div>
+  <div>
+    <div class='gcon'><img id='g4'><div class='gcap' id='gc4'>&nbsp;</div></div>
+    <div class='gcon'><img id='g5'><div class='gcap' id='gc5'>&nbsp;</div></div>
+    <div class='gcon'><img id='g6'><div class='gcap' id='gc6'>&nbsp;</div></div>
+    <div class='clearAll'>&nbsp;</div>
+  </div>
+</div>
+<div id='slideshow'>
+  <div class='scon'><img id='s1'><div class='scap' id='sc1'>&nbsp;</div></div>
+</div>
+<div id='navigation'>
+  <span id='prev'>&#171; Previous</span>                      
+  <span id='next'>Next &#187;</span>                      
+  <p><span id='back'>Back to the Gallery</span></p>                      
+  <p><span id='auto' title='Toggle Auto-Slide'>Auto-Slide</span> <span id='time'>&nbsp;</span></p>                      
+</div>
+</div> <!-- end demo1 -->
+
+<h3>HTML For The Demo</h3>                      
+<div class='collapsible'>
+<pre>
+&lt;div id='gallery'&gt;
+  &lt;div&gt;
+    &lt;div class='gcon'&gt;&lt;img id='g1'&gt;&lt;div class='gcap' id='gc1'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class='gcon'&gt;&lt;img id='g2'&gt;&lt;div class='gcap' id='gc2'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class='gcon'&gt;&lt;img id='g3'&gt;&lt;div class='gcap' id='gc3'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class='clearAll'&gt;&amp;nbsp;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class='gcon'&gt;&lt;img id='g4'&gt;&lt;div class='gcap' id='gc4'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class='gcon'&gt;&lt;img id='g5'&gt;&lt;div class='gcap' id='gc5'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class='gcon'&gt;&lt;img id='g6'&gt;&lt;div class='gcap' id='gc6'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class='clearAll'&gt;&amp;nbsp;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id='slideshow'&gt;
+  &lt;div class='scon'&gt;&lt;img id='s1'&gt;&lt;div class='scap' id='sc1'&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id='navigation'&gt;
+  &lt;span id='prev'&gt;&amp;#171; Previous&lt;/span&gt;
+  &lt;span id='next'&gt;Next &amp;#187;&lt;/span&gt;
+  &lt;p&gt;&lt;span id='back'&gt;Back to the Gallery&lt;/span&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;span id='auto' title='Toggle Auto-Slide'&gt;Auto-Slide&lt;/span&gt; &lt;span id='time'&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+</div> <!-- end collapsible -->
+
+<h3>Development Notes and Script Assumptions</h3>
+<div>
+<ol>
+<li>Optional URL arguments: g = 'gallery first num', s = 'slideshow img num'. For example:<br>img_gallery_2.php?g=21<br>img_gallery_2.php?s=30</li>
+<li>IMG IDs begin with 'g' (for gallery) or 's' (for slideshow) then are numbered sequentially beginning with 1. No leading zeros.</li>
+<li>Gallery (thumbnail) image pathnames: gPath + gPrefix + seq_num + gSuffix + gExt<br>SlideShow (large image) pathnames:   sPath + sPrefix + seq_num + sSuffix + sExt<br>Leading zeros (as part of seq_num) are optional.</li>
+<li>The captions array initializations could be generated server-side.</li>
+<li>This file does not have to be a PHP file - I use it here for my page-template, not for this demo.</li>
+</ol>
+</div>
+
+<h3>Other Gallery/SlideShow Toys</h3>
+<div class='collapsible'>
+<p><a href='http://www.sitepoint.com/forums/showthread.php?t=226945'>CliffHanger9</a>'s <a href='http://hellfire.dusers.drexel.edu/~dusail/NewSite/pictures/OCCFall04/gallery.html'>original</a> demo of my first version.</p>
+<p>Vic's <a href='http://homepage.ntlworld.com/vwphillips/BatchSlideShow/BatchSlideShow.htm'>Batch Slide Show</a>.</p>
+<p><a href='http://www.google.com/custom?q=javascript+image+gallery+slideshow&sitesearch=&sa=Search&domains=cross-browser.com&client=pub-6162857333153838&forid=1&ie=UTF-8&oe=UTF-8&cof=GALT%3A%23008000%3BGL%3A1%3BDIV%3A%23336699%3BVLC%3A663399%3BAH%3Acenter%3BBGC%3AFFFFFF%3BLBGC%3A336699%3BALC%3A0000FF%3BLC%3A0000FF%3BT%3A000000%3BGFNT%3A0000FF%3BGIMP%3A0000FF%3BFORID%3A1%3B&hl=en'>Google</a> this topic.</p>
+<p><i><a href='../contact.php'>Suggest</a> another link to put here.</i></p>
+</div> <!-- end collapsible -->
+
+<h3>Revisions</h3>
+<div class='collapsible'>
+<p><i>v2.5, 29Apr05</i>: Added support for captions.</p>
+<p><i>v2.4, 25Apr05</i>: A few little updates. I'll try to add support for captions soon.</p>
+<p><i>v2.3, 1Apr05</i>: More improvements. A list of features is in the works.</p>
+<p><i>v2.2, 1Apr05</i>: A few more improvements. (1) Doesn't display img elements when n > imgsMax. (2) Next and Prev now wrap around and are always visible.</p>
+<p><i>v2.1, 1Apr05</i>: Michael Finch made a good suggestion and I've implemented it. The image files can now be named only with a sequential number (plus the extension) and you can specify different directories for gallery imgs and slideshow imgs. There is still alot I need to do to this but it is really turning out nice thanks to your feedback :-)</p>
+</div> <!-- end collapsible -->
+
+</div> <!-- end leftContent -->
+
+
+<div id='footer' class='leftContent'>
+Copyright &copy; 2000-2011 Michael Foster<br>
+Javascript distributed under the terms of the <a href='../license.html'>GNU LGPL</a>
+</div> <!-- end footer -->
+
+</div> <!-- end leftColumn -->
+
+<div id='rightColumn' class='column'>
+<div class='rightContent'>
+
+<h3>Related Demos</h3>
+<div class='collapsible'>
+<p><a href='img_gallery.php'>img gallery v1</a></p>
+<p>More image-related demos: <a href='../x/examples/ximgasyncwait.php'>xImgAsyncWait</a> and <a href='../x/examples/img_viewport.html'>Image Viewport</a>.</p>
+</div> <!-- end collapsible -->
+
+<h3>Tech Support</h3>
+<div class='collapsible'>
+<p>Forum support is available at the <a href='http://cross-browser.com/forums/'>X&nbsp;Library Support Forums</a>.</p>
+</div>
+<h3>Search</h3>
+<div class='collapsible'>
+<form method="get" action="http://www.google.com/custom">
+<p><a class='googlelogo' href="http://www.google.com/"><img class='googleImg' src="../images/google_logo_25gry.gif" alt="Google"></a></p>
+<p><input type="text" name="q" size="20" maxlength="255" value="" class="inpTxt"></p>
+<p><input type="radio" name="sitesearch" value="cross-browser.com" checked> Cross-Browser.com</p>
+<p><input type="radio" name="sitesearch" value=""> World Wide Web</p>
+<p><input type="submit" name="sa" value="Search"></p>
+<div>
+<input type="hidden" name="domains" value="cross-browser.com">
+<input type="hidden" name="client" value="pub-6162857333153838">
+<input type="hidden" name="forid" value="1">
+<input type="hidden" name="ie" value="ISO-8859-1">
+<input type="hidden" name="oe" value="ISO-8859-1">
+<input type="hidden" name="flav" value="0000">
+<input type="hidden" name="sig" value="Y5LRa_LKddZM22Hw">
+<input type="hidden" name="cof" value="GALT:#BF8660;GL:1;DIV:#596380;VLC:596380;AH:center;BGC:FFFFFF;LBGC:FFFFFF;ALC:596380;LC:596380;T:000000;GFNT:CFD4E6;GIMP:CFD4E6;LH:30;LW:285;L:http://cross-browser.com/images/cb_small.gif;S:http://cross-browser.com/;FORID:1">
+<input type="hidden" name="hl" value="en">
+</div>
+</form>
+</div> <!-- end collapsible -->
+
+</div> <!-- end rightContent -->
+</div> <!-- end rightColumn -->
+
+</body>
+</html>

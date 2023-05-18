@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv=Content-Type content='text/html; charset=UTF-8'><title>xTabPanelGroup Demo 1</title>
+	<meta name=author content='Mike Foster (Cross-Browser.com)'>
+	<meta name=description content="Cross-Browser Javascript Libraries and Applications">
+	<meta name=keywords 
+		content='javascript,dhtml,crossbrowser,animation,tooltips,menu,collapsible,dhtml drag drop,downgradeable layout,dynamic select,image rollover, dhtml layout,css,dom,api,library,dhtml demos,lgpl code,
+          unobtrusive dhtml,dom2 events,dynamic forms,animation,ellipse,parametric equation,
+		object-oriented javascript'>
+	<meta name=license content='Distributed under the terms of the GNU LGPL (gnu.org)'>
+	<link rel='shortcut icon' href=http://cross-browser.com/favicon2.ico type='image/x-icon'>
+	<script type='text/javascript' src='/x/x.js'></script>
+	<script type='text/javascript' src='/x/xtabpanelgroup.js'></script>
+	<script type='text/javascript'>
+		xAddEventListener(window, 'load',
+  			function() {
+    			new xTabPanelGroup('tpg1', 300, 150, 22, 'tabPanel', 'tabGroup', 'tabDefault', 'tabSelected');
+    			new xTabPanelGroup('tpg2', 500, 250, 40, 'tabPanel', 'tabGroup', 'tabDefault', 'tabSelected'); changeTab(2, 3);}, false);
+            function changeTab(demo, tab) {xTabPanelGroup.instances['tpg' + demo].select(tab); return false;}
+    </script></head>
+<body><div id=topLinkCon><a name='topofpg'>&nbsp;</a></div>
+<div id='leftColumn' class='column'> <!-- Begin left column -->
+<div class='leftContent'> <!-- Begin left content -->
+    <h2>xTabPanelGroup</h2><h3>Demo 1</h3>
+<div>
+<div id=tpg1 class='tabPanelGroup'>
+
+  <div class='tabGroup'>
+    <a href='#tpg11' class='tabDefault'>General</a><span class='linkDelim'>&nbsp;|&nbsp;</span><a href='#tpg12' class='tabDefault'>Javascript</a><span class='linkDelim'>&nbsp;|&nbsp;</span>   
+    <a href='#tpg13' class='tabDefault'>CSS</a><span class='linkDelim'>&nbsp;|&nbsp;</span><a href='#tpg14' class='tabDefault'>HTML</a>   
+  </div>
+  
+  <div id='tpg11' class='tabPanel'>
+    <h4>General</h4>
+    <p>Tab panel groups. Multiple objects can be instantiated on one page.</p>
+  </div>
+  
+  <div id='tpg12' class='tabPanel'>
+    <h4>Javascript</h4>
+    <p>Cross-browser, downgradeable, and unobtrusive. Disable Javascript and reload this page.</p>
+  </div>
+  
+  <div id='tpg13' class='tabPanel'>
+    <h4>CSS</h4>
+  </div>
+  
+  <div id='tpg14' class='tabPanel'>
+    <h4>HTML</h4>
+    <p>The content is in the HTML - it is not written with Javascript.</p>
+  </div>
+  
+</div>
+</div>
+
+
+</div> <!-- end leftContent -->
+
+
+</div> <!-- end leftColumn -->
+
+</body>
+</html>

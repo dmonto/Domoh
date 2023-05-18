@@ -1,0 +1,27 @@
+{
+    "remotePath": "./httpdocs/",
+    "host": "ec2-3-250-82-179.eu-west-1.compute.amazonaws.com",
+    "username": "domohcom",
+    "password": "hecaran",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            ""
+        ],
+        "path": ""
+    }
+}

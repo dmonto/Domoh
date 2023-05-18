@@ -1,0 +1,48 @@
+﻿.tabPanelGroup {position:relative;}
+.tabPanel {position: absolute; display: none;}
+.tabGroup {position: absolute; overflow: hidden;}
+.tabGroup A.tabDefault:link {
+	border-bottom: rgb(145,155,156) 1px solid; position: absolute; text-align: center; border-left: #EBEBEB 1px solid; background: #FFFAF4; overflow: hidden; 
+	border-top: #FFFFFF 2px solid; cursor: pointer; border-right: #EBEBEB 1px solid; text-decoration: none;
+}
+.tabGroup A.tabDefault:visited {
+	border-bottom: rgb(145,155,156) 1px solid; position: absolute; text-align: center; border-left: #EBEBEB 1px solid; background: #FFFAF4; overflow: hidden; 
+	border-top: #FFFFFF 2px solid; cursor: pointer; border-right: #EBEBEB 1px solid; text-decoration: none;
+}
+.tabGroup A.tabDefault:active {
+	border-bottom: rgb(145,155,156) 1px solid; position: absolute; text-align: center; border-left: #EBEBEB 1px solid; background: #FFFAF4; overflow: hidden; 
+	border-top: #FFFFFF 2px solid; cursor: pointer; border-right: #EBEBEB 1px solid; text-decoration: none;
+}
+.tabDefault {
+	border-bottom: rgb(145,155,156) 1px solid; position: absolute; text-align: center; border-left: #EBEBEB 1px solid; background: #FFFAF4; overflow: hidden; border-top: #FFFFFF 2px solid; cursor: pointer; 
+    border-right: #EBEBEB 1px solid; text-decoration: none;
+}
+.tabGroup A.tabDefault:hover {
+	border-bottom: rgb(145,155,156) 1px solid; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: #FFFAF4; overflow: hidden; border-top: #FF9900 2px solid; cursor: pointer; 
+    font-weight: bold; border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+.tabDefault:hover {
+	border-bottom: rgb(145,155,156) 1px solid; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: #FFFAF4; overflow: hidden; border-top: #FF9900 2px solid; cursor: pointer; 
+    font-weight: bold; border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+.tabGroup A.tabSelected:link {
+	border-bottom: medium none; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: rgb(252,252,254); overflow: hidden; border-top: #FF9900 4px solid; cursor: pointer; 
+    border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+.tabGroup A.tabSelected:visited {
+	border-bottom: medium none; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: rgb(252,252,254); overflow: hidden; border-top: #FF9900 4px solid; cursor: pointer; 
+    border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+.tabGroup A.tabSelected:active {
+	border-bottom: medium none; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: rgb(252,252,254); overflow: hidden; border-top: #FF9900 4px solid; cursor: pointer; 
+    border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+.tabGroup A.tabSelected:hover {
+	border-bottom: medium none; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: rgb(252,252,254); overflow: hidden; border-top: #FF9900 4px solid; cursor: pointer; 
+    border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+.tabSelected {
+	border-bottom: medium none; position: absolute; text-align: center; border-left: rgb(145,155,156) 1px solid; background: rgb(252,252,254); overflow: hidden; border-top: #FF9900 4px solid; cursor: pointer; 
+    border-right: rgb(145,155,156) 1px solid; text-decoration: none;
+}
+span.linkDelim {display: none;}

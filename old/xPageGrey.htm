@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv=Content-Type content='text/html; charset=UTF-8'><title>xPageGrey Demo 1</title>
+	<link rel='shortcut icon' href=http://cross-browser.com/favicon2.ico type=image/x-icon>
+	<link rel=stylesheet type=text/css href=/x/v3.css>
+	<!-- Everything above this line is for the site template, not for any demo on this page. -->
+	<style type=text/css>
+		.clsPageGreyDiv {position: absolute; overflow: hidden; width: 10px; height: 10px; left: -10px; top: -10px; z-index: 100; opacity: .3; /* CSS3 */ background-color: #000;}
+		.clsPageGreyImg {border: none; margin-right: 20px;}
+        .clsPageGreyMsg { /* a P element which contains the img and msg text */
+        position: absolute; width: 200px; left: -220px; padding: 4px; color: #BF8660; background-color: #FFF; border: 2px solid #BF8660; z-index: 101;}
+        #demoBtn {cursor:pointer; border-bottom:1px dotted #000;}
+</style>
+<!--[if gte IE 5.5]>
+<style type='text/css'>
+    .clsPageGreyDiv { filter: alpha(opacity=30); }
+</style>
+<![endif]-->
+<script type=text/javascript src='/x/x.js'></script>
+<script type=text/javascript src='/x/xdocsize.js'></script>
+<script type='text/javascript' src='/x/xpagegrey.js'></script>
+</head>
+<body><div id='topLinkCon'><a name='topofpg'>&nbsp;</a></div>
+
+<div id='leftColumn' class='column'> <!-- Begin left column -->
+<div class='leftContent'> <!-- Begin left content -->
+
+<h2>xPageGrey Demo 1</h2>
+<p>This demo is a result of questions from two different threads at SPF: 
+<a href='http://www.sitepoint.com/forums/showthread.php?t=442002'>westmich</a> and <a href='http://www.sitepoint.com/forums/showthread.php?t=448683'>Jim Stanley</a>.</p>
+<p>xPageGrey is an object which allows you to "grey" the page and display a "wait" image and message in the center of the window. This page illustrates two different ways to use it.</p>
+<p>While working on this we ran into the <i>bfcache</i> or (<i>fastback</i>) feature in Opera and Firefox1.5+. Here's some 
+    <a href='http://developer.mozilla.org/en/docs/Using_Firefox_1.5_caching'>Firefox documentation on bfcache</a>. I can't find any 'official' Opera documentation on it. 
+    The thread by Jim Stanley provides more information.</p>
+<p>The xPageGrey object eventually evolved into <a href='xmodaldialog.php'>xModalDialog</a>.</p>
+<p>Last update to this page: 6 Jul 07</p>
+<p>12 Sep 10: <a href='xpagegrey2.php'>xPageGrey2</a> shows a better grey/gray technique.</p>
+
+<h3>Example 1</h3>
+<div>
+    <p>This demo greys the page and waits for something... The user can click anywhere to cancel it.</p>
+<p><span id='demoBtn'>Activate Page-Grey</span></p></div>
+
+<h3>Example 2</h3>
+<div>
+<p>This demo greys the page when the user submits a form. The page remains greyed until the new page is loaded.</p>
+<form id='demoForm' action='http://www.google.com/search' method='get'>
+<p>Search the web for: <input type='text' name='q'> <input type='submit' value='Submit to Google'></p>
+</form>
+</div>
+
+<h3>The next toy I'll be playing with...</h3>
+<div>
+<p>The <a href='http://www.nxp.com/pip/LPC2131_32_34_36_38_3.html'>LPC2131/32/34/36/38</a> microcontrollers are based on a 16/32-bit ARM7TDMI-S CPU with real-time emulation and embedded trace support, that combine the microcontroller with 32 kB, 64 kB, 128 kB, 256 kB and 512 kB of embedded high-speed flash memory. A 128-bit wide memory interface and a unique accelerator architecture enable 32-bit code execution at maximum clock rate. For critical code size applications, the alternative 16-bit Thumb mode reduces code by more than 30 pct with minimal performance penalty.</p>
+<p>Due to their tiny size and low power consumption, these microcontrollers are ideal for applications where miniaturization is a key requirement, such as access control and point-of-sale. With a wide range of serial communications interfaces and on-chip SRAM options of 8 kB, 16 kB, and 32 kB, they are very well suited for communication gateways and protocol converters, soft modems, voice recognition and low-end imaging, providing both large buffer size and high processing power. Various 32-bit timers, single or dual 10-bit 8-channel ADC(s), 10-bit DAC, PWM channels and 47 GPIO lines with up to nine edge or level sensitive external interrupt pins make these microcontrollers particularly suitable for industrial control and medical systems.</p>
+</div>
+
+</div> <!-- end leftContent -->
+
+
+<div id='footer' class='leftContent'>
+Copyright &copy; 2000-2011 Michael Foster<br>
+Javascript distributed under the terms of the <a href='../../license.html'>GNU LGPL</a>
+</div> <!-- end footer -->
+
+</div> <!-- end leftColumn -->
+
+<div id='rightColumn' class='column'>
+<div class='rightContent'>
+
+<h3>Related</h3>
+<div class='collapsible'>
+<p><a href='xpagegrey2.php'>xPageGrey Demo 2</a></p>
+<p><a href='xmodaldialog.php'>xModalDialog Demo</a></p>
+</div>
+<h3>Animated Wait</h3>
+<div class='collapsible'>
+<p>Thanks to <a href='http://www.brettdewoody.com/'>brettdewoody.com</a> for the animated "wait" gif.</p>
+</div>
+<h3>Tech Support</h3>
+<div class='collapsible'>
+<p>Forum support is available at the <a href='http://cross-browser.com/forums/'>X&nbsp;Library Support Forums</a>.</p>
+</div>
+<h3>User Projects</h3>
+<div class='collapsible'>
+<p>If you are using <b>X</b>, XC or anything from this site, <i>show off</i> your work by posting a link in the <a href='http://cross-browser.com/forums/viewforum.php?id=6'>X Showcase</a> forum.</p>
+</div>
+</div> <!-- end rightContent -->
+</div> <!-- end rightColumn -->
+
+</body>
+</html>

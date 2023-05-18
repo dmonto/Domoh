@@ -1,0 +1,29 @@
+﻿body {
+	background-color:transparent; color:#006699; font-family:Optimum,Verdana; margin:0; padding:0;		 
+	scrollbar-3Dlight-Color:33CCFF; scrollbar-arrow-color:33CCFF; scrollbar-face-color:#006699; scrollbar-track-color:33CCFF;
+}
+               
+table {font-size:x-small; background-color:transparent; color:#800080;}
+
+a:link {color:#006699;}
+a:visited {color:#006699;}
+a:active {color:green;}
+a:hover {color:green;}
+
+img {border-style:none;}
+td {vertical-align:top;background-color:transparent;}
+input {font-family:Optimum,Verdana;}
+textarea {font-family:Optimum,Verdana;}
+select {font-family:Optimum,Verdana;}
+
+tr.destacado {
+	font-weight:bold; 
+	font-size:small; 
+	color:black; 
+	background-color=cyan;
+}
+
+button.boton {
+	background-color:#3333CC; 
+	color:#FFFFFF;
+}
