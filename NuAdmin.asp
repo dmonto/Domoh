@@ -27,4 +27,3 @@
 		<h2><a title='Datos de Usuario' href='TrUsuario.asp?usuario=hector' target=tablas>Cambiar Password etc</a><a title='Cuidaditorrrl!!' href=NuAdminBD.asp target=bd>Acceso Directo a BD</a></h2></div>
 	<div class=foot>
 		<!-- #include file="IncPie.asp" --></div></div>
-	

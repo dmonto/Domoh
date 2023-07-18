@@ -11,7 +11,7 @@
    <url><loc>http://www.domoh.com/TrContactanos.asp</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
    <url><loc>http://www.domoh.com/NuDomoh.asp</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
    <url><loc>http://www.domoh.com/QuAnuncioDetalle.asp?tabla=Inquilinos&amp;id=9049</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-   <url><loc>http://www.domoh.com/TrAnuncioDetalle.asp?tabla=Inquilinos&amp;id=9043</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+   <url><loc>http://www.domoh.com/QuAnuncioDetalle.asp?tabla=Inquilinos&amp;id=9043</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
    <url><loc>http://www.domoh.com/TrAnuncioDetalle.asp?tabla=Inquilinos&amp;id=9041</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
    <url><loc>http://www.domoh.com/TrAnuncioDetalle.asp?tabla=Inquilinos&amp;id=9040</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
    <url><loc>http://www.domoh.com/TrAnuncioDetalle.asp?tabla=Inquilinos&amp;id=9024</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
@@ -22,7 +22,6 @@
    <url><loc>http://www.domoh.com/TrAnuncioDetalle.asp?tabla=Inquilinos&amp;id=10334</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
    <url><loc>http://www.domoh.com/NuLogOff.asp</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
    <url><loc>http://www.domoh.com/QuMenu.asp</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-   <url><loc>http://www.domoh.com/NuRecomendamos.asp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
    <url><loc>http://www.domoh.com/TrVacas.asp</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
    <url><loc>http://www.domoh.com/TrViviendaBusco.asp?tipo=vacas</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
    <url><loc>http://www.domoh.com/TrVacasBuscoFront.asp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

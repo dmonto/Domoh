@@ -13,4 +13,3 @@
 	end if 
 
 	Response.Redirect "NuAdminFuentes.asp"
-	

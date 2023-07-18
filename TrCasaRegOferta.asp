@@ -116,9 +116,6 @@
     		<a href=TrVivienda.asp class=linkutils><%=MesgS("Anuncios de Vivienda","Property Adverts")%> &gt;</a>
 		    <a href=TrCasaRegOfrezcoFront.asp class=linkutils><%=MesgS("Nuevo Anuncio","New Advert")%></a> &gt; <%=MesgS("Subir Fotos","Upload Pictures")%></div></div></div>
 <h1 class=tituSec><% Response.Write MesgS("Publicación de Piso o Habitación para Vivir", "Post New Advert for Rent")%></h1>
-<div>
-    <!-- #include file="IncTrDestacado.asp" -->
-</div>
     <div>
 <%	if Request("Foto")="on" or Request("op")="FotoBorrada" then %>
 <%		if Request("op")<>"FotoBorrada" and (Request("id")="" or Request("id")="nuevo") then %>

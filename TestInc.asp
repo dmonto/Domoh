@@ -1,6 +1,6 @@
 <!-- #include file="IncNuBD.asp" -->
 <!-- #include file="IncQuCabecera.asp" -->
-<!-- #include file="IncTrDetalles.asp" -->
+<!-- #include file="IncQuDetalles.asp" -->
 <%  
     on error goto 0
 

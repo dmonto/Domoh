@@ -67,4 +67,3 @@
         <img src='images/TrAdsVivienda<%=Session("Idioma")%>.gif' id=boton_vivienda onmouseover="ImgSwap('boton_vivienda','images/TrAdsVivienda<%=Session("Idioma")%>_O.gif')" onmouseout=ImgRestore() /></a>
         <a title='<%=MesgS("Ver y Publicar Anuncios","Watch and Post Ads")%>' target=_self href='TrVacas.asp?idioma=<%=MesgS("Es","En")%>&head=si'>
         <img src='images/TrAdsVacaciones<%=Session("Idioma")%>.gif' id=boton_vacaciones onmouseover="ImgSwap('boton_vacaciones','images/TrAdsVacaciones<%=Session("Idioma")%>_O.gif')" onmouseout=ImgRestore() /></a>
-    

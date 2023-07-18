@@ -37,8 +37,6 @@
     <div class=logo><img alt='Domoh' src=images/TrLogo.gif class=imagen /></div>
     <div class=banner><img src="images/TrBannerEnswf.jpg" class=full></div>
     <div class=topmenu>
-        <a title='<%=MesgS("Contactanos","Contact us")%>' href='TrContactanos.asp?idioma=<%=MesgS("Es","En")%>' target=menu class=linkutils>
-            <img alt='<%=MesgS("Contacto","Contact us")%>' src=images/Mail.png class=icono /></a>
         <a title='<%=MesgS("Conócenos","About us")%>' href='TrAbout.asp?idioma=<%=MesgS("Es","En")%>' target=menu class=linkutils>
             <img alt='<%=MesgS("Conócenos","About us")%>' src=images/Info.png class=icono /></a>
         <a title='<%=MesgS("English version","En Español")%>' href='PeMenu.asp?nuevoidioma=<%=MesgS("En","Es")%>'><img src='images/<%=MesgS("Eng","Esp")%>.svg' class=icono /></a></div>

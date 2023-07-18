@@ -6,4 +6,3 @@
             <img alt='Contacto' src=images/TrContact.gif class=icono /><%=MesgS("Contacto","Contact us")%></a></h1>
         <h1><a title='<%=MesgS("Conócenos","About us")%>' href='TrAbout.asp?idioma=<%=MesgS("Es","En")%>' target=principal class=linkutils>
             <img alt='Conócenos' src=images/TrConocenos.gif class=icono /><%=MesgS("Conócenos","About us")%></a></h1></div></div>
-    

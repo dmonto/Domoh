@@ -11,4 +11,3 @@
     <h2>
     <% Response.Write UMesgS(sIdi, "SI NO HAS RECIBIDO NUESTRO CORREO, POR FAVOR COMPRUEBA TU CORREO 'SPAM' ", "IF YOU HAVEN'T RECEIVED OUR E-MAIL, PLEASE CHECK YOUR 'SPAM' ")%>
     <% Response.Write UMesgS(sIdi, "O 'CORREO NO DESEADO' ", "OR 'UNWANTED' FOLDERS")%></h2></div>
-    
