@@ -43,7 +43,6 @@
             Nuestros ofertantes son personas que quieren alquilar sus casas a personas como nosotr@s: no nos importa tu orientación sexual. Es asunto tuyo.</p>
         <p>Elige en qué lugar quieres pasar tus vacaciones y encuentra pisos y casas compartidas a tu alcance: para un fin de semana, semana o lo que te apetezca sin gastarte lo que no te apetece.</p>
         <p>Entra y mira de forma gratuita las casas, pisos o habitaciones en casa compartidas que están disponibles: !Date prisa porque la cosa está que arde!</p>
-        <p>Visita nuestras <a title='Ver Links Recomendados' href=NuRecomendamos.asp>recomendaciones</a>. Siempre hay algo nuevo que no habías visto antes sin lo que no podrás vivir a partir de ahora.</p>
         <p>Si tienes algún amig@ que está buscando un sitio para vivir háblale de domoh, seguro que te lo agradecerá.</p>
         <p>En domoh queremos llegar a todas las ciudades lo antes posible y estamos trabajando duro para conseguirlo. Visita periódicamente nuestra página y pronto verás como ya hay ofertas también en tu ciudad.</p>
         <p>Si tienes poco dinero y quieres independizarte y tienes amig@s que están igual que tú, en domoh.com encontrarás la solución: comparte un piso con ell@s a un precio más que razonable.</p>		

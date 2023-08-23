@@ -94,12 +94,6 @@
 <div class=container>
 	<div class=logo><a href=QuDomoh.asp class=linkutils>&lt;&lt; <%=MesgS("Volver a Home","Back to Home Page")%></a></div>
 	<div class=topmenu><a href=TrVacas.asp class=linkutils><%=MesgS("Anuncios Vacaciones","Holiday Adverts")%> &gt; </a><% Response.Write MesgS("Publicar Nuevo Lugar de Vacaciones", "Post New Holidays Advert")%></div>
-<%	if Request("op")="Destacar" then %>
-		<!-- #include file="IncTrDestacado.asp" -->
-<%	
-		Response.End
-	end if 
-%>
 	<h1 class="banner"><% Response.Write MesgS("Publicación de Apartamento u Hotel para Vacaciones", "Vacation Advert Publication")%></h1>
 	<div class=main>
 		<!-- #include file="IncNuCondUso.asp" -->

@@ -1,30 +1,95 @@
-vti_encoding:SR|utf8-nl
-vti_timelastmodified:TR|23 Dec 2014 20:41:41 -0000
-vti_extenderversion:SR|12.0.0.0
-vti_title:SR|Domoh - 
-vti_lineageid:SR|{B7B95039-8AD1-4512-A9BB-8455E3E90BEE}
-vti_backlinkinfo:VX|NuVacasSwapOferta.asp TrVacasSwapOferta.asp
-vti_usagebymonth:UX|1 0 1
-vti_usagebyweek:UX|1
-vti_usagebyday:UX|1
-vti_usagelastupdated:TX|10 Apr 2011 06:59:59 -0000
-vti_usagetotalhits:IX|2
-vti_modifiedby:SR|UltraVaio\\Dig
-vti_syncwith_domoh.com\:21:TX|16 May 2014 05:07:16 -0000
-vti_syncofs_domoh.com\:21:TW|29 May 2014 04:25:00 -0000
-vti_author:SR|UltraVaio\\Dig
-vti_nexttolasttimemodified:TW|23 Sep 2014 05:49:01 -0000
-vti_timecreated:TR|03 Nov 2012 09:14:41 -0000
-vti_syncofs_216.218.224.247\:21/httpdocs:TW|06 Sep 2014 19:22:00 -0000
-vti_syncwith_216.218.224.247\:21/httpdocs:TX|16 May 2014 05:07:16 -0000
-vti_cacheddtm:TX|23 Dec 2014 20:41:41 -0000
-vti_filesize:IR|4753
-vti_cachedtitle:SR|Domoh - 
-vti_cachedbodystyle:SR|<body onload="window.parent.location.hash='top'">
-vti_cachedlinkinfo:VX|H|QuDomoh.asp H|TrVacas.asp H|TrVacasSwapOferta.asp
-vti_cachedsvcrellinks:VX|FHUS|QuDomoh.asp FHUS|TrVacas.asp FHUS|TrVacasSwapOferta.asp
-vti_cachedneedsrewrite:BR|false
-vti_cachedhasbots:BR|false
-vti_cachedhastheme:BR|false
-vti_cachedhasborder:BR|false
-vti_charset:SR|windows-1252
+<!-- #include file="IncNuBD.asp" -->
+<!-- #include file="IncTrJpeg.asp" -->
+<!-- #include file="IncTrUpload.asp" -->
+<%
+	dim Upload, sNombreFich, i, Fich, sNombrePreview, Jpeg
+	on error goto 0
+	
+	if Request("borrar")<>"" then
+		rst.Open "DELETE FROM Fotos WHERE id=" & Request("borrar"), sProvider
+		if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+
+		if Session("Id")<>"" then
+			rst.Open "SELECT COUNT(*) AS numfotos FROM Fotos WHERE piso=" & Session("Id"), sProvider
+			if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+			if rst("numFotos")=0 then
+				rst.Close
+				sQuery= "UPDATE Anuncios SET foto='', fechaultimamodificacion=GETDATE() WHERE id=" & Session("Id")
+				rst.Open sQuery, sProvider
+				if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+			end if
+		end if
+		
+		Response.Redirect "TrVacasSwapOferta.asp"
+	end if
+%>
+<!-- #include file="IncTrCabecera.asp" -->
+<body onload="window.parent.location.hash='top'"> 
+<div class=container>
+	<div class=logo>
+		<a href=QuDomoh.asp class=linkutils>&lt;&lt; <%=MesgS("Volver a Home","Back to Home Page")%></a>
+		<a href=TrVacas.asp class=linkutils><%=MesgS("Anuncios Vacaciones","Holiday Adverts")%> </a> &gt; <a href=TrVacasSwapOferta.asp class=linkutils><%=MesgS("Nuevo Anuncio","New Advert")%></a>
+			&gt; <%=MesgS("Subir Fotos","Upload Pictures")%> &gt; <%=MesgS("Anuncio Grabado","Advert Saved")%></div>
+    <h1 class=tituSec><% Response.Write MesgS("Publicación de Apartamento para Intercambio de Vacaciones","Flat Swap Advert Publication")%></h1>
+    <div class=row>
+<%
+	set Upload = New FileUploader
+	Upload.maxFileSize = 300000
+	Upload.fileExt = "jpg,gif,bmp,png,jpeg"
+	Upload.Upload()
+
+	if Upload.Error then
+		Mail "diego@domoh.com", "Error en " & Request.Servervariables("SCRIPT_NAME"), Upload.ErrorDesc
+		Response.Write UMesgS(Upload.Form("idioma"), "Hay un problema con las fotos: ", "Problem uploading pictures: ") & Upload.ErrorDesc
+		Response.End
+	end if
+
+	if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+	dim sNombreFinal, j
+	j=0
+	
+	for each Fich in Upload.Files()
+		rst.Open "SELECT MAX(id)+1 AS nextid FROM Fotos", sProvider
+		sNombreFich="fotos/" & rst("nextid") & Fich.Ext
+		rst.Close
+
+		if Session("Id")="" then Session("Id")=Upload.Form("id")
+		if Session("Id")="" then 
+			sQuery="SELECT MAX(id) AS maxid FROM Anuncios WHERE usuario='" & Session("Usuario") & "'"
+			rst.Open sQuery, sProvider
+			if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+			Session("Id")=rst("maxid")
+			rst.Close
+		end if	
+	
+		if sNombrePreview="" then 
+			sNombrePreview=sNombreFich
+			sQuery="UPDATE Anuncios SET foto='" & sNombrePreview & "', fechaultimamodificacion=GETDATE() WHERE id=" & Session("Id")
+			rst.Open sQuery, sProvider
+			if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+		end if	
+
+		Upload.SaveOne Server.MapPath("/"), j, sNombreFich, sNombreFinal
+		set Jpeg = new DigJpeg
+		Jpeg.Open sNombreFich
+		Jpeg.Height = 100
+		Jpeg.Save "mini" & sNombreFich
+
+		sQuery= "INSERT INTO Fotos (piso, foto) VALUES(" & Session("Id") & ", '" & sNombreFich & "')"
+
+		rst.Open sQuery, sProvider
+		if Err then Mail "diego@domoh.com", "Error en TrVacasSwapOfertaFoto", Err.Description
+		j=j+1
+	next
+	
+	if Session("Usuario")="hector" then 
+		Response.Redirect "NuAdminPisos.asp"
+	elseif Session("Activo")="Si" then 
+		Response.Redirect "QuHomeUsuario.asp?msg=" & Server.URLEncode(UMesgS(Upload.Form("idioma"), "Vivienda modificada correctamente.", "Advert updated correctly"))
+ 	end if
+%>
+        </div>
+	<div><!-- #include file="IncTrUEnvioMail.asp" --></div>
+	</div>
+<!-- #include file="IncUPie.asp" -->
+</body>

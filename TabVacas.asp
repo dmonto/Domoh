@@ -10,4 +10,5 @@
         <div class=tituVerAnuncios><% Response.Write MesgS("<span class=tituVerAnunciosBold>Publicar</span> anuncios de","<span class=tituVerAnunciosBold>Post</span> adverts")%>:</div>
         <div><div><img src=images/TrBulletAnuncios.gif /></div><div><a href=TrVacasRegOfrezcoFront.asp><%=MesgS("Apartamentos y Hoteles","Flats and Hotels")%></a></div></div>
 		</div></div>
-</div>
+
+        

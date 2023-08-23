@@ -1,5 +1,5 @@
 <!-- #include file="IncNuBD.asp" -->
-<!-- #include file="IncTrDetalles.asp" -->
+<!-- #include file="IncQuDetalles.asp" -->
 <html>
 <head>
 	<title><%=MesgS("Detalles de Anuncio","Advert Detail")%></title>

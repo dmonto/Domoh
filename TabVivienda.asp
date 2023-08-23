@@ -16,3 +16,4 @@
     <div class=tituVerAnuncios><% Response.Write MesgS("<span class=tituVerAnunciosBold>Publicar</span> anuncios de","<span class=tituVerAnunciosBold>Post</span> adverts")%>:</div>
     <div><div><img src=images/TrBulletAnuncios.gif /></div><div><a href=JQViviendaBusco.asp><%=MesgS("Pisos y Habitaciones en Alquiler","Flats and Rooms on Rent")%></a></div></div>
     <div><div><img src=images/TrBulletAnuncios.gif /></div><div><a href=TrCasaRegDemandaFront.asp><%=MesgS("Inquilinos","Tenants")%></a></div></div></div></div>
+    
