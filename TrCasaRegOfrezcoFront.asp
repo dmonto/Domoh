@@ -109,7 +109,6 @@
 		</div>
 	<div class=banner><h1><% Response.Write MesgS("Publicación de Piso o Habitación para Vivir", "Post New Advert for Rent")%></h1></div>
 	<div class=main>
-		<!-- #include file="IncNuCondUso.asp" -->
 		<h2><% Response.Write MesgS("¿Cómo es la vivienda que quieres alquilar?","How is the property you want to rent?")%></h2>
 		<input title='<% Response.Write MesgS("Pulsa aquí si alquilas todo el piso","Check if it is a complete apartment")%>' type=radio checked="<% if vtipo="Piso" then Response.Write " checked"%>" value='Piso' name=tipo />
 		<%=MesgS("Es un piso completo ","Complete Apartment")%>
